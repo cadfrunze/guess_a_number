@@ -25,7 +25,6 @@ def jocul():
         sanse = sanse + 10
     elif alegere_nivel == "hard":
         sanse = sanse + 5
-    game0 = True
     print("-" * 20)
     print(f"Numar incercari: {sanse}")
     alegere_numar = input("Alege un numar: ")
@@ -35,22 +34,27 @@ def jocul():
         elif len(alegere_numar) > 3:
             alegere_numar = input("Ai introdus prea multe caractere!. Alege un numar de la 1 la 100: ")
         for i in alegere_numar:
+            user_proba = []
+            user_proba.append(i)
             proba = 0
             if i in TABEL_CARACTERE:
                 alegere_numar = input(f"Hey! Vezi ca nu ai scris o cifra. Alege un numar de la 1 la 100: ")
                 game0 = False
             elif i == " ":
-                alegere_numar = alegere_numar + i.replace(" ", "")
-                i = alegere_numar[-1]
-            if i in TABEL_NUMERE:
+                user_proba.remove(i)
+                len(alegere_numar) + 1
+            if i in TABEL_NUMERE:  
                 proba = proba + 1
             if proba == len(alegere_numar):
+                alegere_numar = "".join(user_proba)
                 while alegere_numar in numere_alese:
                     alegere_numar = input(f"Hey! Vezi ca ai mai scris acest numar ({numere_alese[-1]}). Alege un alt numar: ")
                     game0 = False
+                while alegere_numar not in TABEL_NUMERE:
+                    game0 = False
                 if alegere_numar in TABEL_NUMERE:
                     game0 = True
-                    
+        print(alegere_numar)  
         if game0 == True:
             numere_alese.append(alegere_numar)
             alegere_numar = int(alegere_numar)
