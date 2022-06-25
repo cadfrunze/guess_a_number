@@ -27,35 +27,28 @@ def jocul():
         sanse = sanse + 5
     print("-" * 20)
     print(f"Numar incercari: {sanse}")
+    game0 = True
     alegere_numar = input("Alege un numar: ")
     while sanse >= 1:
-        if len(alegere_numar) == 0:
-            alegere_numar = input("Te rog sa scri o cifra. Alege un numar de la 1 la 100: ")
-        elif len(alegere_numar) > 3:
-            alegere_numar = input("Ai introdus prea multe caractere!. Alege un numar de la 1 la 100: ")
-        for i in alegere_numar:
+        while game0:
+            alegere_numar = input("Alege un numar: ")
             user_proba = []
-            user_proba.append(i)
-            proba = 0
-            if i in TABEL_CARACTERE:
-                alegere_numar = input(f"Hey! Vezi ca nu ai scris o cifra. Alege un numar de la 1 la 100: ")
+            for i in alegere_numar:
+                user_proba.append(i)
+                if i == " ":
+                    user_proba.remove(i)
+            alegere_numar = "".join(user_proba)
+            if alegere_numar.isnumeric():
+                alegere_numar = int(alegere_numar)
                 game0 = False
-            elif i == " ":
-                user_proba.remove(i)
-                len(alegere_numar) + 1
-            if i in TABEL_NUMERE:  
-                proba = proba + 1
-            if proba == len(alegere_numar):
-                alegere_numar = "".join(user_proba)
-                while alegere_numar in numere_alese:
-                    alegere_numar = input(f"Hey! Vezi ca ai mai scris acest numar ({numere_alese[-1]}). Alege un alt numar: ")
-                    game0 = False
-                while alegere_numar not in TABEL_NUMERE:
-                    game0 = False
-                if alegere_numar in TABEL_NUMERE:
-                    game0 = True
-        print(alegere_numar)  
-        if game0 == True:
+                game1 = True
+            else:
+                alegere_numar = input(f"Hey! Vezi ca nu ai scris o cifra. Alege un numar de la 1 la 100: ")
+                game1 = False
+                continue
+
+                
+        if game1 == True:
             numere_alese.append(alegere_numar)
             alegere_numar = int(alegere_numar)
             while alegere_numar > 100 or alegere_numar < 1:
@@ -85,7 +78,8 @@ def jocul():
             sanse = sanse - 1
             print("-" * 20)
             print(f"Numar incercari: {sanse}")
-            alegere_numar = input("Alege un numar: ")
+            game1 = False
+            game0 = True
         if sanse < 1:
             return False
 final = jocul()
