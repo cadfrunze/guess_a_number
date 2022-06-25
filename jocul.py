@@ -1,14 +1,6 @@
-from numbers import Number
-from pickle import TRUE
 from art import logo
 import random
-import string
 print(logo)
-TABEL_CARACTERE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~',]
-TABEL_NUMERE = [
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', 
-'75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100', '101'
-]
 def numarul_ales():
     return random.randint(1, 100)
 NUMARUL_ALES = numarul_ales()
@@ -28,34 +20,35 @@ def jocul():
     print("-" * 20)
     print(f"Numar incercari: {sanse}")
     game0 = True
-    alegere_numar = input("Alege un numar: ")
     while sanse >= 1:
+        alegere_numar = input("Alege un numar: ")
         while game0:
-            alegere_numar = input("Alege un numar: ")
             user_proba = []
             for i in alegere_numar:
                 user_proba.append(i)
                 if i == " ":
                     user_proba.remove(i)
             alegere_numar = "".join(user_proba)
+            print(alegere_numar)
             if alegere_numar.isnumeric():
                 alegere_numar = int(alegere_numar)
+                if alegere_numar > 100 or alegere_numar < 1:
+                    if alegere_numar > 100:
+                        alegere_numar = input(f"Hey! Vezi ca ai scris un numar mai mare ca si 100. Alege un numar de la 1 la 100: ")
+                        continue
+                else:
+                    alegere_numar = input(f"Hey! Vezi ca ai mai scris un numar mai mic ca si 1. Alege un numar de la 1 la 100: ")
+                    continue
                 game0 = False
                 game1 = True
             else:
                 alegere_numar = input(f"Hey! Vezi ca nu ai scris o cifra. Alege un numar de la 1 la 100: ")
                 game1 = False
                 continue
-
+            
                 
         if game1 == True:
             numere_alese.append(alegere_numar)
-            alegere_numar = int(alegere_numar)
-            while alegere_numar > 100 or alegere_numar < 1:
-                if alegere_numar > 100:
-                    alegere_numar = input(f"Hey! Vezi ca ai mai scris un numar mai mare ca si 100. Alege un numar de la 1 la 100: ")
-                else:
-                    alegere_numar = input(f"Hey! Vezi ca ai mai scris un numar mai mic ca si 1. Alege un numar de la 1 la 100: ")
             print(f"Ai ales: {numere_alese[-1]}")
             if alegere_numar == NUMARUL_ALES:
                 return True
