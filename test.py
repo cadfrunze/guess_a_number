@@ -1,3 +1,2 @@
-a = 20
-
-print(len(a))
+a = "marius"
+print(a[-1])
