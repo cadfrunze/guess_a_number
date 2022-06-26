@@ -113,7 +113,7 @@ def castigatorii():
         time.sleep(1)
         print(f"Numerele pe care le-ai ales sunt: {numere_alese}")
         time.sleep(1)
-        print(f"Ai reusit sa castigi din {len(numere_alese)}")
+        print(f"Ai reusit sa castigi din {len(numere_alese)} incercari")
         time.sleep(1)
     else:
         print(f"Imi pare rau...ultimul numarul ales de tine: {numere_alese[-1]},")
