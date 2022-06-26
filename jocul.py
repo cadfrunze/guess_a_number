@@ -20,7 +20,6 @@ def jocul():
             scriere = scriere + litare
             os.system('cls')
             print(scriere)
-            time.sleep(0.02)
             if litare == "\n":
                 time.sleep(2)
         time.sleep(3)
@@ -156,6 +155,7 @@ while intrebare0:
         print("Bine")
         time.sleep(2)
         print("La revedere!")
+        time.sleep(2)
         intrebare0 = False
         sys.exit()
     else:
