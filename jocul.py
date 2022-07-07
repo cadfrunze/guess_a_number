@@ -3,13 +3,21 @@ import random
 import time
 import os
 import sys
+
 print(logo)
+
+
 def numarul_ales():
     return random.randint(1, 100)
+
+
 NUMARUL_ALES = numarul_ales()
+
 numere_alese = []
 intrebare0 = True
 intrebare1 = True
+
+
 def jocul():
     if intrebare1:
         print("Bine ai venit la jocul \"Ghiceste numarul\"")
@@ -56,13 +64,16 @@ def jocul():
             elif alegere_numar.isnumeric():
                 alegere_numar = int(alegere_numar)
                 if alegere_numar > 100:
-                    alegere_numar = input("Hey! Vezi ca ai scris un numar mai mare ca si 100. Alege un numar de la 1 la 100: ")
+                    alegere_numar = input(
+                        "Hey! Vezi ca ai scris un numar mai mare ca si 100. Alege un numar de la 1 la 100: ")
                     continue
                 elif alegere_numar < 1:
-                    alegere_numar = input("Hey! Vezi ca ai mai scris un numar mai mic ca si 1. Alege un numar de la 1 la 100: ")
+                    alegere_numar = input(
+                        "Hey! Vezi ca ai mai scris un numar mai mic ca si 1. Alege un numar de la 1 la 100: ")
                     continue
                 elif alegere_numar in numere_alese:
-                    alegere_numar = input(f"Hey! Vezi ca ai mai scris acest numar: \"{alegere_numar}\". Pana acum numerele tale alese sunt {str(numere_alese)}. Alege un numar de la 1 la 100: ")
+                    alegere_numar = input(
+                        f"Hey! Vezi ca ai mai scris acest numar: \"{alegere_numar}\". Pana acum numerele tale alese sunt {str(numere_alese)}. Alege un numar de la 1 la 100: ")
                     continue
                 else:
                     game0 = False
@@ -71,8 +82,7 @@ def jocul():
                 alegere_numar = input(f"Hey! Vezi ca nu ai scris o cifra. Alege un numar de la 1 la 100: ")
                 game1 = False
                 continue
-        
-                
+
         if game1 == True:
             numere_alese.append(alegere_numar)
             print(f"Ai ales: {numere_alese[-1]}")
@@ -102,7 +112,11 @@ def jocul():
             game0 = True
         if sanse < 1:
             return False
+
+
 final = jocul()
+
+
 def castigatorii():
     if final == True:
         time.sleep(1)
@@ -120,6 +134,8 @@ def castigatorii():
         print(f"Iar pana acum numerele alese de tine sunt {numere_alese},")
         time.sleep(2)
         print(f"Din pacate nu ai ghicit numarul ales de calculator care este {NUMARUL_ALES}.")
+
+
 castigatorul = castigatorii()
 while intrebare0:
     print("Doresti sa joci din nou?")
@@ -138,7 +154,7 @@ while intrebare0:
             NUMARUL_ALES = numarul_ales()
             final = jocul()
             castigatorul = castigatorii()
-            
+
         elif raspunde1 == "nu" or raspunde1 == "no":
             intrebare1 = False
             numere_alese = []
@@ -149,7 +165,7 @@ while intrebare0:
             os.system('cls')
             print("Nu am inteles!")
             continue
-            
+
     elif raspunde0 == "nu" or raspunde0 == "no":
         os.system('cls')
         print("Bine")
